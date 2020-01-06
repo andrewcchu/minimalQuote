@@ -2,6 +2,7 @@ import argparse
 import os
 import random
 import uuid
+import getpass
 
 from nider.core import Font
 from nider.core import Outline
@@ -16,7 +17,8 @@ from wand.image import Image
 from argparse import RawTextHelpFormatter
 
 result_path = '/results/'
-font_path = "/Users/andrewchu/Library/Fonts/Aileron-Heavy.otf"
+# Replace this path with your desired font path
+font_path = "/Users/" + getpass.getuser() + "/Library/Fonts/Aileron-Heavy.otf"
 text_outline = Outline(1, '#000000')
 
 # Parser definition and setup
@@ -27,6 +29,7 @@ parser.add_argument('--batch', action='store_true', help='Generate backgrounds f
 parser.add_argument('--color', type=str, help='Hex color code; will generate ALL background with this color code')
 args = parser.parse_args()
 
+# Function to generate background
 def generate_background(color, mq_width, mq_height, quote, author, name):
   path = os.getcwd()
   res_path = path + result_path + str(name) + '.png'
@@ -53,7 +56,6 @@ def generate_background(color, mq_width, mq_height, quote, author, name):
                     height=int(mq_height)
                     )
 
-  # TODO: change this image path to the image path on your machine
   img.draw_on_bg(color)
 
 # Function to parse predefined list of quotes
@@ -80,7 +82,6 @@ def main():
   color = args.color
   # Single quote
   if batch is True:
-    # template_arr = generate_template(width, height, color_list)
     print('Enter path to quote file:')
     quote_src = input()
     quote_arr = parse_quote_file(quote_src)
