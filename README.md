@@ -21,4 +21,8 @@ positional arguments:
 optional arguments:
   * -h, --help: show this help message and exit
   * --batch: Generate backgrounds from predefined list of quotes
+    * Example in this repository is `silicon_valley_quotes.txt`
+    * If utilizing this option, format your quote list in the same was as shown:
+      * `\n;\n` as the delimiter between quote/author pairs
+      * `|` (pipe) as the delimiter between quote and author
   * --color COLOR: Hex color code; will generate ALL background with this color code
